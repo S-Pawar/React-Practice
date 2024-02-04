@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import QuickButton from "./QuickButton";
 import { Form, Button } from "react-bootstrap";
+import ImageAndTooltips from "./ImageAndTooltips"
 import "./index.css";
 
 const App = () => {
@@ -13,7 +15,8 @@ const App = () => {
   const [totalPages, setTotalPages] = useState(0);
   const searchInput = useRef(null);
   const [loading, setLoading] = useState(false);
-
+  //TODO add random bg
+  // eslint-disable-next-line no-unused-vars
   const fetchbackgroundImage = async () => {
     try {
       const { data } = await axios.get(
@@ -24,7 +27,6 @@ const App = () => {
       console.log(error);
     }
   };
-  //add bg
 
   // useEffect(() => {
   //   fetchbackgroundImage();
@@ -41,6 +43,7 @@ const App = () => {
             import.meta.env.VITE_API_KEY
           }`
         );
+
         console.log("data", data);
         setImages(data.results);
         setTotalPages(data.total_pages);
@@ -81,6 +84,7 @@ const App = () => {
             placeholder="Enter something to search here"
             className="search-input"
             ref={searchInput}
+            onChange={handleSearch}
           />
         </Form>
       </div>
@@ -90,29 +94,16 @@ const App = () => {
         <QuickButton Name={"Birds"} onQuickButtonClick={QuickButtonhandler} />
         <QuickButton Name={"Dogs"} onQuickButtonClick={QuickButtonhandler} />
         <QuickButton Name={"Sports"} onQuickButtonClick={QuickButtonhandler} />
-        {/* <div onClick={()=> handleQuickButton('Nature')}>Nature</div>
-        <div onClick={()=> handleQuickButton('Birds')}>Birds</div>
-        <div onClick={()=> handleQuickButton('Dogs')}>Dogs</div>
-        <div onClick={()=> handleQuickButton('Sports')}>Sports</div> */}
+      
       </div>
-      {/* //add likes */}
+    
 
       {loading ? (
-        <p className="loading">Loading</p>
+        <p className="loading">Loading💫</p>
       ) : (
         <>
-          <div className="images">
-            {images.map((image) => {
-              return (
-                <img
-                  key={image.id}
-                  src={image.urls.small}
-                  alt={image.alt_description}
-                  className="image"
-                />
-              );
-            })}
-          </div>
+        <ImageAndTooltips images={images}/>
+        
         </>
       )}
 

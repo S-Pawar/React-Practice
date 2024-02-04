@@ -6,18 +6,25 @@
   --default-margin: 1rem;
   --medium-margin: 3rem;
   --larger-margin: 5rem;
-  --primary-color: #7676d7;
+  --primary-color: #0096fa;
+  
+
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
 
 body {
   color: var(--primary-color);
+  background-color: #17191a !important;
+
 }
+
+
 
 /* common css starts */
 
@@ -33,7 +40,7 @@ body {
 .title {
   text-align: center;
   margin-top: var(--default-margin);
-  color: #7676d7;
+  color: #0096fa;
 }
 
 .buttons {
@@ -60,7 +67,7 @@ body {
 }
 
 .loading {
-  color: #6565d4;
+  color: white;
   text-align: center;
   margin-top: 20px;
   font-size: 20px;
@@ -101,7 +108,7 @@ body {
 
 .filters > * {
   padding: 5px 10px;
-  background: #7676d7;
+  background: #0096fa;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
@@ -128,6 +135,7 @@ body {
   margin-left: 2rem;
   border-radius: 10px;
   transition: transform 0.5s;
+  object-fit: cover
 }
 
 .images .image:hover {
@@ -140,6 +148,7 @@ body {
 @media (max-width: 768px) {
   .images {
     grid-template-columns: repeat(2, 1fr);
+    place-self: center;
   }
 }
 
@@ -148,6 +157,7 @@ body {
     width: 100%;
     min-width: unset;
     margin: 0 var(--default-margin);
+    place-self: center;
   }
 
   .images {
